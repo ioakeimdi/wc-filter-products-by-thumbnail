@@ -10,8 +10,8 @@ defined( 'ABSPATH' ) || exit;
 class WC_Admin_Products_Filter_By_Thumbnail {
     
     function __construct() {
-        add_action( 'restrict_manage_posts', [ $this, 'filter_by_the_thumbnail' ] );
-        add_action( 'parse_query', [ $this, 'filter_products_by_thumbnail' ] );
+        add_action( 'restrict_manage_posts', array( $this, 'filter_by_the_thumbnail' ) );
+        add_action( 'parse_query', array( $this, 'filter_products_by_thumbnail' ) );
     }
 
     /**
@@ -28,7 +28,7 @@ class WC_Admin_Products_Filter_By_Thumbnail {
             <select name="product_thumbnail_filter" onchange="this.form.submit()">
                 <option value="">Thumbnail filter</option>
                 <?php
-                    $filter_img_opt = [ 'No Thumbnail', 'Thumbnail' ];
+                    $filter_img_opt = array( 'No Thumbnail', 'Thumbnail' );
 
                     $selected_opt = isset( $_GET['product_thumbnail_filter'] ) ? $_GET['product_thumbnail_filter'] : '';
 
@@ -52,22 +52,21 @@ class WC_Admin_Products_Filter_By_Thumbnail {
         $thumbnail_filter = $_GET['product_thumbnail_filter'];
     
         if ( $thumbnail_filter === '0' ) {
-            $query->set( 'meta_query', [
-                [
+            $query->set( 'meta_query', array(
+                array(
                     'key' => '_thumbnail_id',
                     'compare' => 'NOT EXISTS',
-                ],
-            ]);
+                ),
+            ));
             
             $query->set( 'post_status', 'publish' );
         } elseif ( $thumbnail_filter === '1' ) {
-            $query->set( 'meta_query',
-                [
-                    [
+            $query->set( 'meta_query', array(
+                    array(
                         'key'     => '_thumbnail_id',
                         'compare' => '=',
-                    ],
-                ]
+                    ),
+                )
             );
         }
     }
