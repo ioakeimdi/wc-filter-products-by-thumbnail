@@ -1,10 +1,11 @@
 <?php
-/*
-	Plugin Name: Filter products by thumbnail
-    Description: Adds a filter to the admin products list to display products based on the presence of a thumbnail image.
-	Version: 1.0.0
-	Author: id
-*/
+/**
+ * Plugin Name: Filter products by thumbnail
+ * Description: Adds a filter to the admin products list to display products based on the presence of a thumbnail image.
+ * Version:     1.0.0
+ * Author:      id
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 class WC_Admin_Products_Filter_By_Thumbnail {
