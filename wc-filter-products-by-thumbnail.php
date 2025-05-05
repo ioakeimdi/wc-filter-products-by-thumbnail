@@ -15,8 +15,7 @@ class WC_Admin_Products_Filter_By_Thumbnail {
     }
 
     /**
-     * 
-     * Filter products by thumbnail
+     * Add option in filters above table
      * 
      */
     function filter_by_the_thumbnail( $post_type ) {
@@ -32,7 +31,7 @@ class WC_Admin_Products_Filter_By_Thumbnail {
 
                     $selected_opt = isset( $_GET['product_thumbnail_filter'] ) ? $_GET['product_thumbnail_filter'] : '';
 
-                    foreach( $filter_img_opt as $o => $opt ) {
+                    foreach ( $filter_img_opt as $o => $opt ) {
                         ?>
                             <option value="<?php echo $o ?>" <?php selected( $selected_opt, $o ) ?>><?php echo $opt ?></option>
                         <?php
@@ -45,7 +44,7 @@ class WC_Admin_Products_Filter_By_Thumbnail {
     function filter_products_by_thumbnail( $query ) {
         global $typenow;
     
-        if ( $typenow !== 'product' || ! isset( $_GET['product_thumbnail_filter'] ) ){
+        if ( $typenow !== 'product' || ! isset( $_GET['product_thumbnail_filter'] ) ) {
             return;
         }
 
